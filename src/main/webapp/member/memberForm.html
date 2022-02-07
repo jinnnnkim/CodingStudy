@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입폼</title>
+	<style type="text/css">
+		.wrap {
+			border: 5px solid #CEE3F6; 
+			padding: 30px;
+			width: 275px;
+			height: 170px;
+		}
+		.btn {
+			border: 2px solid #CEE3F6;
+			background-color: #CEE3F6;
+			border-radius: 5px;
+			width: 70px;
+			float: right;
+			margin: 20px 5px 0 0;
+		}
+	</style>
+	<script type="text/javascript">
+		function vaildMember(){
+			var frmMember = document.frmMember;
+			
+			var id = frmMember.id.value;
+			var pwd = frmMember.pwd.value;
+			var name =frmMember.name.value;
+			var tel = frmMember.tel.value;		//유효성 검사
+			
+			if(id.length==0 || id ==""){
+				
+				alert("아이디는 필수입니다.");
+			}
+			else if(pwd.length==0 || pwd==""){
+				alert("비밀번호는 필수입니다.")
+			}
+			else if(name.length==0 || name==""){
+				alert("이름은 필수입니다.")
+			}
+			else if(tel.length==0 || tel==""){
+				alert("전화번호는 필수입니다.")
+			}
+			else{
+				frmMember.method = "post";		
+				frmMember.action= "member.jsp";	
+				frmMember.submit();				//서블릿으로 전송함.
+			}
+		}
+	</script>
+</head>
+<body>
+<div class="wrap">
+	<form name="frmMember" method="post" action="member.jsp">
+		<table >
+			<th>회원가입창</th>
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="id"></td>	
+			</tr>
+				<tr>
+				<td>비밀번호</td>
+				<td><input type="password" name="pwd"></td>
+			</tr>
+				<tr>
+				<td>이름</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+				<tr>
+				<td>전화번호</td>
+				<td><input type="text" name="tel"></td>
+			</tr>
+		</table>
+	
+	<input type="button" value="가입하기" onclick="vaildMember()" class="btn">
+	<input type="reset" value="다시입력" class="btn">
+	<input type="hidden" name = "command" value="addMember">
+	</form>
+</div>
+</body>
+</html>
